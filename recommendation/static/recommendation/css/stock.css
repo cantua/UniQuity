@@ -1,0 +1,29 @@
+body{
+  /*background-image: url("https://ak5.picdn.net/shutterstock/videos/15118015/thumb/11.jpg");*/
+  /*background-size: 75%;*/
+}
+
+.parallax {
+  /* The image used */
+  background-image: url("https://ak5.picdn.net/shutterstock/videos/15118015/thumb/11.jpg");
+
+  /* Full height */
+  height: 100%;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+h3{
+  font-family: 'Abril Fatface', cursive;
+  font-size: 50px;
+  font-style: italic;
+  position: center
+}
+
+header {
+  font-family: 'Cinzel', serif;
+}

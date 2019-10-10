@@ -1,0 +1,60 @@
+.row {
+  padding-left: 40px
+}
+
+body{
+  display: flex;
+  margin: 0;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #2c3e50;
+  font-family: 'Jura', sans-serif, bold;
+}
+
+a{
+  text-decoration: none;
+  color: black;
+}
+
+header{
+  display: flex;
+  justify-content: space-between;
+  background: url("https://media.istockphoto.com/vectors/abstract-financial-background-with-global-in-network-sphere-and-chart-vector-id944472162");
+  background-position: bottom left;
+  font-family: 'Cinzel', serif;
+}
+
+main > *, header, footer{
+  margin: 4px;
+  padding: 5px;
+  border-radius: 7px;
+}
+main{
+  display: flex;
+/*   min-height: 800px; */
+  flex-basis: 800px;
+}
+
+article{
+  flex: 4 0 60%;
+  /*background: #ecf0f1;*/
+/*   flex-grow: 4; */
+/*   flex-basis: 60%; */
+}
+
+.navbar {
+  flex: 1 1 20%;
+  order: -1;
+}
+
+
+h2 {
+    font-family: 'Cinzel', serif;
+    position: static;
+}
+
+.jumbotron {
+  background: url("https://media.istockphoto.com/vectors/abstract-financial-background-with-global-in-network-sphere-and-chart-vector-id944472162");
+  font-family: 'Cinzel', serif;
+}
+

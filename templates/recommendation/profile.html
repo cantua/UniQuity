@@ -1,0 +1,112 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>UniQuity Recommendation</title>
+    <link rel="stylesheet"  type="text/css" href="{% static '/recommendation/css/profile.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=EB+Garamond|Jura&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Cinzel|Fjalla+One&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+<header>
+<nav class="navbar shadow p-3 mb-5 bg-white rounded navbar-light ">
+  <a class="navbar-brand" >
+    <img src="https://cdn0.iconfinder.com/data/icons/stock-market/512/bull_trend-512.png" width="50" height="50" class="d-inline-block align-top" alt="">
+    UniQuity Recommendations: Unique equities just for you
+  </a>
+    <ul class="navbar-nav px-3">
+        <li class="nav-item text-nowrap">
+          <a class="nav-link" href="{% url 'home' %}">Sign out</a>
+        </li>
+      </ul>
+</nav>
+</header>
+
+<main>
+
+
+{% block content %}
+
+
+    <div class="jumbotron  jumbotron-fluid bg-transparent">
+    <div class="container">
+  <h1 class="display-4">Welcome to your UniQuity Recommendations</h1>
+  <p class="lead">Helping You Discover Equities Just For You</p>
+        </div>
+        </div>
+{% if user.is_authenticated %}
+{#<div class="container">#}
+
+  <div class="row">
+
+    <div class="col-6">
+
+        <h2>Your Equity List Below</h2>
+
+            <br>
+            <br>
+
+             {%  if filter %}
+                    {% for s in filter %}
+                    <div class="wrapper">
+                    <a  href="https://finance.yahoo.com/quote/{{s.stock.ticker}}?p={{s.stock.ticker}}&.tsrc=fin-srch" target="_blank"><button class="accordion">{{s.stock.name}}</button></a>
+                        <div class="panel">
+                            <p>{{s.stock.description}}.</p>
+                        </div>
+                     </div>
+
+                    {% endfor %}
+             {% else %}
+                    No Results
+     {% endif %}
+
+    </div>
+
+    <div class="col-6">
+
+        <h2>Market News</h2>
+    <br>
+    <br>
+
+            <div class = "container">
+                <div class = "row">
+                    {% for x in api.data %}
+                        <div class="col-sm">
+                        <div class="card" style="width: 18rem;">
+                                <img src="{{x.image_url}}" class="card-img-top" alt={{x.source_name}}>
+                                <div class="card-body">
+                                <h5 class="card-title">{{x.title}}</h5>
+                                <p class="card-text">{{x.text}}</p>
+                                <a href="{{x.news_url}}" class="btn btn-primary">Read More..</a>
+                                </div>
+                        </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+    </div>
+
+  </div>
+
+{#</div>#}
+  {% endif %}
+{% endblock %}
+</main>
+
+
+<footer>FOOTER</footer>
+
+
+</body>
+
+{#    <script src="{% static '/recommendation/js/profile.js' %}"></script>#}
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</html>

@@ -1,0 +1,36 @@
+
+
+*{
+    margin:0;
+    padding:5px;
+}
+
+body {
+    background-color: transparent;
+    background: url('/static/recommendation/images/charts.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+center {
+    font-weight:bold;
+}
+
+h1 {
+    font-family: 'Jura', sans-serif, bold;
+    position: static;
+}
+
+h5 {
+    font-family: 'Jura', sans-serif, Light;
+    position: static;
+    font-size: 25px;
+}
+
+.flow-text {
+    font-family: 'Jura', sans-serif, bold
+}

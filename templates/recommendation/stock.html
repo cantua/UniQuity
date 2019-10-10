@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>UniQuity Recommendations: Unique equities just for you</title>
+    <link rel="stylesheet"  type="text/css" href="{% static '/recommendation/css/stock.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Cinzel|Fjalla+One&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+
+<header>
+<nav class="navbar navbar-light ">
+  <a class="navbar-brand">
+    <img src="https://cdn0.iconfinder.com/data/icons/stock-market/512/bull_trend-512.png" width="50" height="50" class="d-inline-block align-top" alt="">
+    UniQuity Recommendations: Unique equities just for you
+  </a>
+</nav>
+</header>
+
+<main>
+<div class="parallax">
+<div class="container">
+{% block content %}
+{%  if filter %}
+    {% for stock in filter %}
+
+        <div id="accordion">
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                    <h5 class="mb-0">
+            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#{{stock.ticker}}" aria-expanded="false" aria-controls="{{stock.ticker}}">
+                {{stock.name}}
+            </button>
+                    </h5>
+                </div>
+
+
+                <div id="{{stock.ticker}}" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                    <div class="card-body">
+                        <p>{{stock.description}}.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% else %}
+    No Results
+{%  endif %}
+{% endblock %}
+</div>
+
+</div>
+</main>
+<br>
+<div class="container">
+    <div class="row center-align text">
+    <h3> By creating a profile you can now keep track of your Uniquity Recommendations</h3>
+    </div>
+    <br>
+       <div class="row center">
+        <a href="{% url 'signup' questionnaire=questionnaire.pk  %}" class="btn btn-primary btn-block" type="submit">Create UniQuity Profile
+            <i class="material-icons right">assessment</i>
+        </a>
+        </div>
+
+</div>
+
+</body>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="{% static '/recommendation/js/stock.js' %}"></script>
+    <script type = "text/javascript" src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+</html>

@@ -1,0 +1,237 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>UniQuity Recommendations: Unique equities just for you</title>
+    <link rel="stylesheet"  type="text/css" href="{% static '/recommendation/css/recommendation.css' %}">
+    <link rel="stylesheet"  type="text/images" href="{% static '/recommendation/images/charts.jpg' %}">
+    <link href="https://fonts.googleapis.com/css?family=Lora&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=EB+Garamond|Jura&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="container">
+    <div class="container">
+    <h1 class="center">UniQuity Recommendations</h1>
+    <h5 class="center"> <em>Unique equities just for you</em></h5>
+    </div>
+    <form action="{% url 'recommend'  %}" method = "post"> {% csrf_token %}
+
+        <h3 class="flow-text">Select Your Gender</h3>
+
+            <p>
+                <label>
+                    <input name="gender" type="radio" value="Male"/>
+                    <span style="color:black">Male</span>
+                </label>
+            </p>
+            <p>
+                <label>
+                    <input name="gender" type="radio" value="Female"/>
+                    <span style="color:black">Female</span>
+                </label>
+            </p>
+
+        <h3 class="flow-text">Do You Like To Take Risks?</h3>
+            <p>
+                <label>
+                    <input name= "risk" type="radio" value="Yes"/>
+                    <span style="color:black">Yes</span>
+                </label>
+            </p>
+            <p>
+                <label>
+                    <input name="risk" type="radio" value="No"/>
+                    <span style="color:black">No</span>
+                </label>
+            </p>
+
+        <h3 class="flow-text">Sectors I'm interested in:</h3>
+
+         <div class = "select2-dropdown--below">
+            <label>
+                <select name="sector"  class="mdb-select md-form colorful-select dropdown-danger" multiple>
+                    <option value="" disabled selected>Choose a Sector</option>
+                        <option name="sector" value="Communication Services">Communication Services</option>
+                        <option name="sector" value="Consumer Discretionary">Consumer Discretionary</option>
+                        <option name="sector" value="Consumer Staples">Consumer Staples</option>
+                        <option name="sector" value="Energy">Energy</option>
+                        <option name="sector" value="Financials">Financials</option>
+                        <option name="sector" value="Health Care">Health Care</option>
+                        <option name="sector" value="Industrials">Industrials</option>
+                        <option name="sector" value="Information Technology">Information Technology</option>
+                        <option name="sector" value="Materials">Materials</option>
+                        <option name="sector" value="Real Estate">Real Estate</option>
+                        <option name="sector" value="Utilities">Utilities</option>
+                    </select>
+            </label>
+        </div>
+
+        <h3 class="flow-text">Specifically the industries:</h3>
+
+        <div class = "select2-dropdown--below">
+            <label>
+                <select name="industry"  class="mdb-select md-form colorful-select dropdown-danger" multiple>
+                    <option value="" disabled selected>Choose an Industry</option>
+                    <optgroup  label="Communication Services">
+                        <option name="industry" value="Diversified Telecommunication Services">Diversified Telecommunication Services</option>
+                        <option name="industry" value="Entertainment">Entertainment</option>
+                        <option name="industry" value="Interactive Media & Services">Interactive Media & Services</option>
+                        <option name="industry" value="Media">Media</option>
+                        <option name="industry" value="Wireless Telecommunication Services">Wireless Telecommunication Services</option>
+                        <option name="industry" value="Entertainment">Entertainment</option>
+                    </optgroup>
+                    <optgroup  label="Consumer Discretionary">
+                        <option name="industry" value="Auto Components">Auto Components</option>
+                        <option name="industry" value="Automobiles">Automobiles</option>
+                        <option name="industry" value="Distributors">Distributors</option>
+                        <option name="industry" value="Diversified Consumer Services">Diversified Consumer Services</option>
+                        <option name="industry" value="Hotels, Restaurants & Leisure">Hotels, Restaurants & Leisure</option>
+                        <option name="industry" value="Household Durables">Household Durables</option>
+                        <option name="industry" value="Internet & Direct Marketing Retail">Internet & Direct Marketing Retail</option>
+                        <option name="industry" value="Leisure Products">Leisure Products</option>
+                        <option name="industry" value="Multiline Retail">Multiline Retail</option>
+                        <option name="industry" value="Specialty Retail">Specialty Retail</option>
+                        <option name="industry" value="Textiles, Apparel & Luxury Goods">Textiles, Apparel & Luxury Goods</option>
+                    </optgroup>
+
+                    <optgroup label="Consumer Staples">
+                        <option name="industry" value="Beverages">Beverages</option>
+                        <option name="industry" value="Food & Staples Retailing">Food & Staples Retailing</option>
+                        <option name="industry" value="Food Products">Food Products</option>
+                        <option name="industry" value="Household Products">Household Products</option>
+                        <option name="industry" value="Personal Products">Personal Products</option>
+                        <option name="industry" value="Tobacco">Tobacco</option>
+                    </optgroup>
+
+                    <optgroup label="Energy">
+                        <option name="industry" value="Energy Equipment & Services">Energy Equipment & Services</option>
+                        <option name="industry" value="Oil, Gas & Consumable Fuels">Oil, Gas & Consumable Fuels</option>
+                    </optgroup>
+
+                    <optgroup label="Financials">
+                        <option name="industry" value="Banks">Banks</option>
+                        <option name="industry" value="Capital Markets">Capital Markets</option>
+                        <option name="industry" value="Consumer Finance">Consumer Finance</option>
+                        <option name="industry" value="Diversified Financial Services">Diversified Financial Services</option>
+                        <option name="industry" value="Insurance">Insurance</option>
+                    </optgroup>
+
+                    <optgroup label="Health Care">
+                        <option name="industry" value="Biotechnology">Biotechnology</option>
+                        <option name="industry" value="Health Care Equipment & Supplies">Health Care Equipment & Supplies</option>
+                        <option name="industry" value="Health Care Technology">Health Care Technology</option>
+                        <option name="industry" value="Life Sciences Tools & Services">Life Sciences Tools & Services</option>
+                        <option name="industry" value="Pharmaceuticals">Pharmaceuticals</option>
+                    </optgroup>
+
+                    <optgroup label="Industrials">
+                        <option name="industry" value="Aerospace & Defense">Aerospace & Defense</option>
+                        <option name="industry" value="Air Freight & Logistics">Air Freight & Logistics</option>
+                        <option name="industry" value="Airlines">Airlines</option>
+                        <option name="industry" value="Building Products">Building Products</option>
+                        <option name="industry" value="Commercial Services & Supplies">Commercial Services & Supplies</option>
+                        <option name="industry" value="Construction & Engineering">Construction & Engineering</option>
+                        <option name="industry" value="Electrical Equipment">Electrical Equipment</option>
+                        <option name="industry" value="Industrial Conglomerates">Industrial Conglomerates</option>
+                        <option name="industry" value="Machinery">Machinery</option>
+                        <option name="industry" value="Professional Services">Professional Services</option>
+                        <option name="industry" value="Road & Rail">Road & Rail</option>
+                        <option name="industry" value="Trading Companies & Distributors">Trading Companies & Distributors</option>
+                    </optgroup>
+
+                    <optgroup label="Information Technology">
+                        <option name="industry" value="Communications Equipment">Communications Equipment</option>
+                        <option name="industry" value="Electronic Equipment, Instruments & Components">Electronic Equipment, Instruments & Components</option>
+                        <option name="industry" value="IT Services">IT Services</option>
+                        <option name="industry" value="Semiconductors & Semiconductor Equipment">Semiconductors & Semiconductor Equipment</option>
+                        <option name="industry" value="Software">Software</option>
+                        <option name="industry" value="Technology Hardware, Storage & Peripherals">Technology Hardware, Storage & Peripherals</option>
+                    </optgroup>
+
+                    <optgroup label="Materials">
+                        <option name="industry" value="Chemicals">Chemicals</option>
+                        <option name="industry" value="Construction Materials">Construction Materials</option>
+                        <option name="industry" value="Containers & Packaging">Containers & Packaging</option>
+                        <option name="industry" value="Metals & Mining">Metals & Mining</option>
+                    </optgroup>
+
+                    <optgroup label="Real Estate">
+                        <option name="industry" value="Equity Real Estate Investment Trusts (REITs)">Equity Real Estate Investment Trusts (REITs)</option>
+                        <option name="industry" value="Real Estate Management & Development">Real Estate Management & Development</option>
+                    </optgroup>
+
+                    <optgroup label="Utilities">
+                        <option name="industry" value="Electric Utilities">Electric Utilities</option>
+                        <option name="industry" value="Gas Utilities">Gas Utilities</option>
+                        <option name="industry" value="Independent Power and Renewable Electricity Producers">Independent Power and Renewable Electricity Producers</option>
+                        <option name="industry" value="Multi-Utilities">Multi-Utilities</option>
+                        <option name="industry" value="Water Utilities">Water Utilities</option>
+                    </optgroup>
+                </select>
+            </label>
+        </div>
+        <h3 class="flow-text">Companies that have a CSR/Sustainability Committee</h3>
+            <p>
+                <label>
+                    <input name="csr" type="radio" value="True"/>
+                    <span style="color:black">Yes</span>
+                </label>
+            </p>
+            <p>
+                <label>
+                    <input name="csr" type="radio" value="False"/>
+                    <span style="color:black">No</span>
+                </label>
+            </p>
+
+        <h3 class="flow-text">Companies that Human Rights Policy</h3>
+            <p>
+                <label>
+                    <input name="hr" type="radio" value="Yes"/>
+                    <span style="color:black">Yes</span>
+                </label>
+            </p>
+            <p>
+                <label>
+                    <input name="hr" type="radio" value="No"/>
+                    <span style="color:black">No</span>
+                </label>
+            </p>
+
+        <h3 class="flow-text">Companies that have Female Executives</h3>
+            <p>
+                <label>
+                    <input name="Female_exec" type="radio" value="Yes"/>
+                    <span style="color:black">Yes</span>
+                </label>
+            </p>
+            <p>
+                <label>
+                    <input name="Female_exec" type="radio" value="No"/>
+                    <span style="color:black">No</span>
+                </label>
+            </p>
+
+        <br>
+        <br>
+        <div class="row center">
+        <button class="waves-effect waves-light btn pulse" type="submit">Get UniQuity Stock
+            <i class="material-icons right">assessment</i>
+        </button>
+        </div>
+    </form>
+</div>
+</body>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="{% static '/recommendation/js/recommendation.js' %}"></script>
+    <script type = "text/javascript" src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+
+</html>

@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet"  type="text/css" href="{% static '/recommendation/css/home.css' %}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=EB+Garamond|Jura&display=swap" rel="stylesheet">
+</head>
+
+
+
+<body>
+
+
+
+<div class="container">
+
+    <div class="jumbotron container align-right">
+  <h1 class="#ffffff white-text"> UniQuity Recommendations </h1>
+    <h3 class="#ffffff white-text">
+        UniQuity Recommendations is a place for new investors seeking ideas on which companies to invest in </h3>
+        <div class="container center">
+        <p class="#ffffff white-text"><br>
+    Don't know where to begin? <br>Take our quiz today!</p></div>
+    </div>
+
+<br>
+    <br>
+    <br>
+
+        <div class="container center">
+  		<a href="{% url 'recommend'  %}" class="button">Take Quiz</a>
+
+
+        <a for="css-toggle" href="#modal" class="button modal-trigger">Login</a>
+         </div>
+	</div>
+
+
+<div id="modal" class="modal">
+  <h5 class="modal-close">&#10005;</h5>
+  <div class="modal-content center">
+    <h4>Login Form</h4>
+    <br>
+
+    <form method="post" action="{% url 'login_user' %} ">{% csrf_token %}
+
+      <div class="input-field">
+        <i class="material-icons prefix">person</i>
+          <input type="text" name="username" id="username">
+          <label for="username">Username</label>
+      </div>
+      <br>
+
+      <div class="input-field">
+        <i class="material-icons prefix">lock</i>
+         <input type="password" name="password" required id="password">
+          <label for="password">Password</label>
+      </div>
+      <br>
+
+
+      <input type="submit" value="Login" class="btn btn-large">
+
+    </form>
+  </div>
+</div>
+
+
+<script src="{% static '/recommendation/js/home.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+</body>
+</html>
